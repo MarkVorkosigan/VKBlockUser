@@ -10,20 +10,7 @@
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
 // ==/UserScript==
 
-/*
-if (window.top != window.self)
-{
-	return;
-}
-*/
-/*
-$(function() {
-	alert('start');
-});
-*/
-//debugger;
-
-var start = new Array();	// массив заблоченных юзеров
+var start = new Array();	// массив заблокированных пользователей
 //localStorage.clear();
 //console.log("JSON parse = " + JSON.parse(localStorage.getItem("blacklist")));
 var banned_names = start.concat(JSON.parse(localStorage.getItem("blacklist")));
@@ -36,7 +23,7 @@ for(var i=0; i<banned_names.length; i++)
 }
 NamesString = NamesString.slice(0, -1); 	// отрезаем лишнюю запятую справа
 
-//при загрузке страницы скрыть все сообщения заблокированных юзеров
+//при загрузке страницы скрыть все сообщения заблокированных пользователей
 function DeleteMessages(chkbox_value)  {	
 	var block = document.querySelectorAll(NamesString), i; //найти все элементы <a> с юзерами из banned_names
 	//console.log("block = " + block.toString());
@@ -108,10 +95,6 @@ var im_observer = new MutationObserver(function(mutations) {
 					//console.dir(' ---> UList:' + $(this).parent().prev().children().first().children().first().attr("href"));
 					 link = $(this).children().first().children().first().children().first().children().first().children().first().attr("href");
 					 if (banned_names.includes(link)) {
-						//console.log("HIDING DIV 2 ...");
-
-						//$(':nth-child(3)', $(this).children().last().children().last().children().first()).hide().after('<div class="blocked-message \
-						//												im-mess--text wall_module _im_log_body" style="font-size: 80%"> [Сообщение удалено] </div>');
 						var chk_box1 = JSON.parse(localStorage.getItem("hideChekboxValue"));			
 						if (chk_box1) {
 							$(this).hide();			// div class="im-mess-stack _im_mess_stack"
@@ -121,7 +104,6 @@ var im_observer = new MutationObserver(function(mutations) {
 								$(':nth-child(3)', $(this)).hide().after('<div class="blocked-message im-mess--text wall_module _im_log_body" style=" \
 																		font-size: 75%"> [ Сообщение удалено ] </div>');
 							});
-						//console.dir(' =========> ' + $(this).parent().parent().get(0));
 						}
 					}	
 									
@@ -152,18 +134,14 @@ var im_observer = new MutationObserver(function(mutations) {
 // pass in the target node, as well as the observer options
 im_observer.observe(peer_target, config);
 
-
 // работаем со списком членов конфы  - div class="popup_box_container"
 var box_target = document.querySelector('#box_layer_wrap');
 
 var popup_box_observer = new MutationObserver(function(changes) {
     changes.forEach(function(mutation) {
 		var newNodes = mutation.addedNodes; 
-		//var remNodes = mutation.removedNodes; 
-		//console.log('Mutation type: ' + mutation.type);
 			if ( mutation.type == 'childList' ) {			
 				if( newNodes !== null ) { 				  // панель участников открыта
-
 					//var abc = JSON.parse(localStorage.getItem("hideChekboxValue"));
 					//console.log("localStorage ====================> " + abc);
 					$( "#hide_chkbox" ).prop('checked', JSON.parse(localStorage.getItem("hideChekboxValue")));
@@ -208,16 +186,6 @@ var popup_box_observer = new MutationObserver(function(changes) {
 			
 					});
 				}		// if( newNodes !== null ) {} 
-				/*
-				else { 		// панель участников закрыта
-					if (remNodes !== null) {
-						console.dir(remNodes);
-						var chk_box2 = JSON.parse(localStorage.getItem("hideChekboxValue"));
-						DeleteMessages(chk_box2);
-						console.log("~~~ DeleteMessages() from remNodes ~~~");
-					}
-				}
-				*/
 			}		// if ( mutation.type == 'childList' ) {} 
 
 	});		// changes.forEach(function(mutation) {}
@@ -232,13 +200,10 @@ var popup_box_observer = new MutationObserver(function(changes) {
 	// нажатие на delete-кнопку сохраняет заблоченного пользователя в localstorage, скрывает delete-кнопку и показывает restore-кнопку
 	$(".delete-button").click(function() {
 		var user_id_block = $(this).parent().parent().children().first().attr('href');
-		//console.log('User ID: ' + user_id_block);
 		if (banned_names.indexOf(user_id_block) == -1) {
 			banned_names.push(user_id_block);
 			//console.info("banned name was added: " + banned_names.toString());
 			localStorage.setItem("blacklist", JSON.stringify(banned_names));
-		} else {
-			//console.info("banned name already exists: " + banned_names.toString());
 		}	
 		$(this).hide();
 		var btn_class_restore = ".restore-button." + user_id_block.substr(1);
