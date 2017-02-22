@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name VKBlockUser
-// @namespace VKBlock
+// @namespace VKBlockUser
 // @version 1.4
-// @description  Hiding messages from blocked users in conference. Press F5 for applying changes.
+// @description  Hiding messages from blocked users in VK-conferences. Press F5 for applying changes.
 // @include https://vk.com/im?*
 // @include http://vk.com/im?*
 // @grant none
