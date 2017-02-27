@@ -10,21 +10,11 @@
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
 // ==/UserScript==
 
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
 var start = new Array();	// массив заблокированных пользователей
 //localStorage.clear();
 //console.log("JSON parse = " + JSON.parse(localStorage.getItem("blacklist")));
 var banned_names = start.concat(JSON.parse(localStorage.getItem("blacklist")));
-console.log("banned_names from localstorage = " + banned_names);
+//console.log("banned_names from localstorage = " + banned_names);
 
 var NamesString='a';
 for(var i=0; i<banned_names.length; i++)
@@ -71,7 +61,7 @@ $(document).ready(function() {
 
 	// в зависимости от значения чекбокса либо прячем все сообщения пользователя, либо заменяем их на "сообщение удалено"
 	var chkbox_value = JSON.parse(localStorage.getItem("hideChekboxValue"));
-	console.log('chkbox_value: ' + typeof(chkbox_value) + " " + chkbox_value);
+	//console.log('chkbox_value: ' + typeof(chkbox_value) + " " + chkbox_value);
 	DeleteMessages(chkbox_value);
 });
 
