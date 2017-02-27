@@ -6,7 +6,7 @@
 // @include https://vk.com/im?*
 // @include http://vk.com/im?*
 // @grant none
-// @copyright  2017, Firefly
+// @copyright Firefly, 2017
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
 // ==/UserScript==
 
@@ -54,15 +54,12 @@ $(document).ready(function() {
 	// проверяем чат это на двоих или конфа. Если больше двух пользователей, то это конфа и в заголовке беседы будет указано количество ее участников.
 	var count = $("button._im_chat_members.im-page--members").length;
 
-	if(count == 0 )	{
-		//console.log("COUNT ==== " + count);
-		return;				// это чат, завершить скрипт
-	}
-
-	// в зависимости от значения чекбокса либо прячем все сообщения пользователя, либо заменяем их на "сообщение удалено"
-	var chkbox_value = JSON.parse(localStorage.getItem("hideChekboxValue"));
-	//console.log('chkbox_value: ' + typeof(chkbox_value) + " " + chkbox_value);
-	DeleteMessages(chkbox_value);
+	if( count !== 0 )	{	// это конфа
+		// в зависимости от значения чекбокса либо прячем все сообщения пользователя, либо заменяем их на "сообщение удалено"
+		var chkbox_value = JSON.parse(localStorage.getItem("hideChekboxValue"));
+		//console.log('chkbox_value: ' + typeof(chkbox_value) + " " + chkbox_value);
+		DeleteMessages(chkbox_value);
+	}	
 });
 
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
