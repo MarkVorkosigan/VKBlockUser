@@ -2,7 +2,7 @@
 // @name VKBlockUser
 // @namespace VKBlockUser
 // @version 1.4
-// @description  Hiding messages from blocked users in VK-conferences. Press F5 for applying changes.
+// @description  Прячет сообщения заблоченных пользователей в конфах (беседах). Обязательно нажмите F5, чтобы применить изменения. Hiding messages from blocked users in VK-conferences. Press F5 for applying changes.
 // @include https://vk.com/im?*
 // @include http://vk.com/im?*
 // @grant none
@@ -44,6 +44,8 @@ function DeleteMessages(chkbox_value)  {
 				$(".im_msg_text", div_content).each(function() {
 					$(this).hide().after('<div class="blocked-message wall_module _im_log_body" style=" font-size: 75%"> [ Сообщение удалено ] </div>');
 				});
+				//$(".page_post_sized_thumbs",  div_content).hide();			// прячем картинки
+				$('div[class^="_im_msg_media"]', div_content).hide();			// прячем скинутые пользователем картинки, аудиозаписи, документы etc
 			}		
 		}
 	}
@@ -101,6 +103,8 @@ var im_observer = new MutationObserver(function(mutations) {
 								$(':nth-child(3)', $(this)).hide().after('<div class="blocked-message im-mess--text wall_module _im_log_body" style=" \
 																		font-size: 75%"> [ Сообщение удалено ] </div>');
 							});
+							//$(".page_post_sized_thumbs", $(this)).hide();			// прячем картинки
+							$('div[class^="_im_msg_media"]',  $(this)).hide();		// прячем скинутые пользователем картинки, аудиозаписи, документы etc
 						}
 					}	
 									
@@ -116,6 +120,8 @@ var im_observer = new MutationObserver(function(mutations) {
 							//$(this).parent().parent().parent().hide();
 							$(':nth-child(3)', $(this)).hide().after('<div class="blocked-message im-mess--text wall_module _im_log_body" style=" \
 																	font-size: 75%"> [ Сообщение удалено ] </div>');
+							//$(".page_post_sized_thumbs", $(this)).hide();			// прячем картинки
+							$('div[class^="_im_msg_media"]',  $(this)).hide();		// прячем скинутые пользователем картинки, аудиозаписи, документы etc
 							//console.dir(' =========> ' + $(this).parent().parent().get(0));
 						}
 					}
