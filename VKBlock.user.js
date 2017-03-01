@@ -91,7 +91,7 @@ var im_observer = new MutationObserver(function(mutations) {
 				// скрываем сообщение, которое либо: а) только что пришло и находится в DIV , б) только что загружено из истории (скроллинг вверх) и находится в DIV
 				if  (node.nodeName =='DIV') {	// "im-mess-stack _im_mess_stack" 
 					//console.dir(' ---> UList:' + $(this).parent().prev().children().first().children().first().attr("href"));
-					 link = $(this).children().first().children().first().children().first().children().first().children().first().attr("href");
+					 let link = $(this).children().first().children().first().children().first().children().first().children().first().attr("href");
 					 if (banned_names.includes(link)) {
 						var chk_box1 = JSON.parse(localStorage.getItem("hideChekboxValue"));			
 						if (chk_box1) {
@@ -113,7 +113,7 @@ var im_observer = new MutationObserver(function(mutations) {
 				else { 
 					if  (node.nodeName =='LI') {
 						//console.dir(' ---> UList:' + $(this).parent().prev().children().first().children().first().attr("href"));
-						link = $(this).parent().prev().children().first().children().first().attr("href");
+						let link = $(this).parent().prev().children().first().children().first().attr("href");
 						if (banned_names.includes(link)) {
 							//console.log("HIDING DIV 1 ...");
 							//$(this).parent().parent().parent().hide();
