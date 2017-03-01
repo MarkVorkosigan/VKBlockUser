@@ -6,7 +6,7 @@
 // @include https://vk.com/im?*
 // @include http://vk.com/im?*
 // @grant none
-// @copyright Firefly, 2017
+// @copyright Firefly, 2017, firefly2014@yandex.ru
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
 // ==/UserScript==
 
@@ -17,9 +17,9 @@ var banned_names = start.concat(JSON.parse(localStorage.getItem("blacklist")));
 //console.log("banned_names from localstorage = " + banned_names);
 
 var NamesString='a';
-for(var i=0; i<banned_names.length; i++)
+for(var k=0; k<banned_names.length; k++)
 {
-    NamesString += ('[href="'+banned_names[i]+'"],');
+    NamesString += ('[href="'+banned_names[k]+'"],');
 }
 NamesString = NamesString.slice(0, -1); 	// отрезаем лишнюю запятую справа
 
