@@ -29,8 +29,7 @@ function DeleteMessages(chkbox_value)  {
 	//console.log("block = " + block.toString());
 	for(var i=0; i<block.length; ++i)
 	{
-		// если это элемент <a class="im-mess-stack--lnk">
-		if(block[i].className=='im-mess-stack--lnk')
+		if(block[i].className=='im-mess-stack--lnk')		// <a class="im-mess-stack--lnk">
 		{	
 			//console.log("block[i] = " + $(block[i]).parent().parent().next().toString());
 			//нашли - удаляем весь родительский блок
@@ -167,7 +166,7 @@ var popup_box_observer = new MutationObserver(function(changes) {
 
 						// добавляем созданным кнопкам классы равные id юзера, к которому кнопка относится
 						$(".delete-button, .restore-button", $(this)).each(function() {
-							user_id = $(this).parent().parent().children().first().attr('href');
+							var user_id = $(this).parent().parent().children().first().attr('href');
 							//console.log("id_class ===>" + user_id);
 							$(this).addClass(user_id.substr(1));	
 						});
@@ -175,7 +174,7 @@ var popup_box_observer = new MutationObserver(function(changes) {
 						// если пользователь заблочен, то его delete-кнопку скрываем, а restore-кнопку показываем
 						for(var i=0; i<banned_names.length; ++i) {
 							$(".delete-button").each(function() {
-								user_id = $(this).parent().parent().children().first().attr('href');
+								var user_id = $(this).parent().parent().children().first().attr('href');
 								if (user_id == banned_names[i]) {
 									//console.log("!!! user_id == banned_names (delete) !!!");
 									//console.log("user_id = " + user_id);
@@ -217,7 +216,7 @@ var popup_box_observer = new MutationObserver(function(changes) {
 	$(".restore-button").click(function() {
 		var user_id_restore = $(this).parent().parent().children().first().attr('href');
 		//console.log('User ID: ' + user_id_restore);
-		remove_by_index = banned_names.indexOf(user_id_restore);
+		var remove_by_index = banned_names.indexOf(user_id_restore);
 		// удаляем юзера из массива заблоченных
 		if (remove_by_index > -1) {
 			//delete banned_names[user_id_restore];
