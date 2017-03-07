@@ -8,6 +8,7 @@
 // @grant none
 // @copyright Firefly, 2017, firefly2014@yandex.ru
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
+// @description Если вам понравился скрипт, можно пожертвовать автору немного DASH на адрес Xw9npWWvP1rm9mcRGtasSGvDuZcrUsGe9N
 // ==/UserScript==
 
 var start = new Array();	// массив заблокированных пользователей
