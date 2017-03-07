@@ -2,13 +2,12 @@
 // @name VKBlockUser
 // @namespace VKBlockUser
 // @version 1.4
-// @description  Прячет сообщения заблоченных пользователей в конфах (беседах). Обязательно нажмите F5, чтобы применить изменения. Hiding messages from blocked users in VK-conferences. Press F5 for applying changes.
+// @description  Прячет сообщения заблоченных пользователей в конфах (беседах). Обязательно нажмите F5, чтобы применить изменения. Если вам понравился скрипт, можно пожертвовать автору немного DASH (Xw9npWWvP1rm9mcRGtasSGvDuZcrUsGe9N)
 // @include https://vk.com/im?*
 // @include http://vk.com/im?*
 // @grant none
 // @copyright Firefly, 2017, firefly2014@yandex.ru
 // @require  https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
-// @description Если вам понравился скрипт, можно пожертвовать автору немного DASH на адрес Xw9npWWvP1rm9mcRGtasSGvDuZcrUsGe9N
 // ==/UserScript==
 
 var start = new Array();	// массив заблокированных пользователей
