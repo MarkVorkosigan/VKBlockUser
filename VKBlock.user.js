@@ -2,7 +2,7 @@
 // @name VKBlockUser
 // @namespace VKBlockUser
 // @version 1.4
-// @description  Прячет сообщения заблоченных пользователей в конфах (беседах). Обязательно нажмите F5, чтобы применить изменения. Если вам понравился скрипт, можно пожертвовать автору немного DASH (Xw9npWWvP1rm9mcRGtasSGvDuZcrUsGe9N)
+// @description  Прячет сообщения заблоченных пользователей в конфах (беседах). Обязательно нажмите F5, чтобы применить изменения.
 // @include https://vk.com/im?*
 // @include http://vk.com/im?*
 // @grant none
